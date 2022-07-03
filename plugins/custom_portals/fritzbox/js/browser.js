@@ -1,0 +1,2 @@
+var ok=true,gNbc;try{if(!gNbc){ok=ok&&window.Proxy&&typeof new window.Proxy({},function(){})==="object";["1"].forEach(function(){});ok=ok&&window.Promise&&typeof new window.Promise(function(){})==="object";ok=ok&&window.Blob&&typeof new window.Blob(["<a></a>"],{type:"text/html"})==="object";ok=ok&&window.requestAnimationFrame&&true;ok=ok&&window.Promise.resolve(true).finally(function(){});}}catch(err){ok=false;}
+if(!ok){window.location.href="sorry.lua";}
