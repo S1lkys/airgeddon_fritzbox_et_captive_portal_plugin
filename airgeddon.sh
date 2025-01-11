@@ -15917,7 +15917,7 @@ function autoupdate_check() {
 
 	if check_repository_access; then
 		local version_checked=0
-		airgeddon_last_version= "11.01"
+		airgeddon_last_version="11.01"
 
 		if [ -n "${airgeddon_last_version}" ]; then
 			version_checked=1
@@ -15925,7 +15925,7 @@ function autoupdate_check() {
 			http_proxy_detect
 			if [ "${http_proxy_set}" -eq 1 ]; then
 
-				airgeddon_last_version= "11.01"
+				airgeddon_last_version="11.01"
 				if [ -n "${airgeddon_last_version}" ]; then
 					version_checked=1
 				else
