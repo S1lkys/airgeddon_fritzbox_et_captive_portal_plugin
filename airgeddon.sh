@@ -15742,15 +15742,15 @@ function download_last_version() {
 
 		get_current_permanent_language
 
-		if timeout -s SIGTERM 15 curl -L ${urlscript_directlink} -s -o "${0}"; then
+		if true; then
 			script_file_downloaded=1
 		else
 			http_proxy_detect
 			if [ "${http_proxy_set}" -eq 1 ]; then
 
-				if timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} -s -o "${0}"; then
+				#if timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} -s -o "${0}"; then
 					script_file_downloaded=1
-				fi
+				#fi
 			fi
 		fi
 	fi
@@ -15917,7 +15917,7 @@ function autoupdate_check() {
 
 	if check_repository_access; then
 		local version_checked=0
-		airgeddon_last_version=$(timeout -s SIGTERM 15 curl -L ${urlscript_directlink} 2> /dev/null | grep "airgeddon_version=" | head -n 1 | cut -d "\"" -f 2)
+		airgeddon_last_version= "11.01"
 
 		if [ -n "${airgeddon_last_version}" ]; then
 			version_checked=1
@@ -15925,7 +15925,7 @@ function autoupdate_check() {
 			http_proxy_detect
 			if [ "${http_proxy_set}" -eq 1 ]; then
 
-				airgeddon_last_version=$(timeout -s SIGTERM 15 curl --proxy "${http_proxy}" -L ${urlscript_directlink} 2> /dev/null | grep "airgeddon_version=" | head -n 1 | cut -d "\"" -f 2)
+				airgeddon_last_version= "11.01"
 				if [ -n "${airgeddon_last_version}" ]; then
 					version_checked=1
 				else
@@ -15939,7 +15939,7 @@ function autoupdate_check() {
 		if [ "${version_checked}" -eq 1 ]; then
 			if compare_floats_greater_than "${airgeddon_last_version}" "${airgeddon_version}"; then
 				language_strings "${language}" 213 "yellow"
-				download_last_version
+				#download_last_version
 			else
 				language_strings "${language}" 212 "yellow"
 			fi
